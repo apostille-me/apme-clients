@@ -31,8 +31,17 @@ verify-matrix = "node scripts/verify-client-matrix.mjs"
 dir = "."
 name = "apme-clients-repository"
 
+[targets.c]
+dir = "clients/c"
+
+[targets.cpp]
+dir = "clients/cpp"
+
+[targets.zig]
+dir = "clients/zig"
+
 # TypeScript is the Node.js Zed target. Deno, Bun, and edge remain explicit
-# runtime entry points inside this package rather than unsupported Zed targets.
+# runtime entry points inside this package because they share the npm artifact.
 [targets.nodejs]
 dir = "clients/typescript"
 name = "apme-clients-typescript"
