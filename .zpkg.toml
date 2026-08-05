@@ -10,16 +10,17 @@ language = "polyglot"
 vcs = "git"
 url = "https://github.com/apostille-me/apme-clients"
 
-[install]
-dir = ".vendor/.zed"
+[publish]
+include_readme = true
+tag_format = "v{version}"
+exclude = [".env", ".env.*", "node_modules/**", "zed_modules/**", "target/**", "dist/**", "*.log"]
+
+[scripts]
+test = "bash scripts/test.sh"
 
 [dependencies]
 "apostille-me/apme-interfaces" = "^0.1.0"
 
-[publish]
-include_readme = true
-tag_format = "v{version}"
-exclude = [".env", ".env.*", "node_modules/**", "target/**", "dist/**", "*.log", ".vendor/.zed/**"]
-
-[scripts]
-test = "bash scripts/test.sh"
+[install]
+dir = "zed_modules"
+adapter = "none"
