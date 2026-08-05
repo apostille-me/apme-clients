@@ -45,13 +45,13 @@ for dep in \
   grep -Fq "$dep" .zpkg.toml || { printf 'missing Zed dependency: %s\n' "$dep" >&2; exit 1; }
 done
 
-targets=(gleam erlang elixir dart rust rust-wasm java golang python ruby php nodejs kotlin swift)
+targets=(c cpp zig gleam erlang elixir dart rust rust-wasm java golang python ruby php nodejs kotlin swift)
 for target in "${targets[@]}"; do
   grep -Fq "[targets.$target]" .zpkg.toml || { printf 'missing Zed target: %s\n' "$target" >&2; exit 1; }
 done
 
 for language in c cpp zig; do
-  grep -Fq "\"$language\"" clients/matrix.json || { printf 'missing repository-slice language: %s\n' "$language" >&2; exit 1; }
+  grep -Fq "\"$language\"" clients/matrix.json || { printf 'missing native language in matrix: %s\n' "$language" >&2; exit 1; }
 done
 
 grep -Fq '[targets.repository]' .zpkg.toml
