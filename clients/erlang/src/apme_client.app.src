@@ -1,0 +1,7 @@
+{application, apme_client, [
+  {description, "Erlang endpoint helpers for Apostille Me"},
+  {vsn, "0.1.0"},
+  {modules, []},
+  {registered, []},
+  {applications, [kernel, stdlib]}
+]}.
