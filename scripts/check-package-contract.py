@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Apostille Me polyglot package, SDK surfaces, and runtime adapters."""
+"""Validate the Apostille Me polyglot package, SDK targets, and runtime adapters."""
 
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ EXPECTED_DEPS = {"apostille-me/apme-interfaces", "apostille-me/apme-libs"}
 
 CANONICAL_TARGETS = {
     "repository": ".",
+    "c": "clients/c",
+    "cpp": "clients/cpp",
+    "zig": "clients/zig",
     "nodejs": "clients/typescript",
     "golang": "clients/go",
     "python": "clients/python",
@@ -30,6 +33,9 @@ CANONICAL_TARGETS = {
 }
 
 TARGET_IMPLEMENTATIONS: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
+    "c": (("CMakeLists.txt", "Makefile", "meson.build"), (".c", ".h")),
+    "cpp": (("CMakeLists.txt", "Makefile", "meson.build"), (".cc", ".cpp", ".cxx", ".hpp", ".h")),
+    "zig": (("build.zig", "build.zig.zon"), (".zig",)),
     "nodejs": (("package.json", "tsconfig.json"), (".ts", ".tsx", ".js", ".mjs")),
     "golang": (("go.mod",), (".go",)),
     "python": (("pyproject.toml", "setup.py", "setup.cfg"), (".py",)),
@@ -44,12 +50,6 @@ TARGET_IMPLEMENTATIONS: dict[str, tuple[tuple[str, ...], tuple[str, ...]]] = {
     "java": (("pom.xml", "build.gradle", "build.gradle.kts"), (".java",)),
     "kotlin": (("build.gradle.kts", "build.gradle", "pom.xml"), (".kt",)),
     "swift": (("Package.swift",), (".swift",)),
-}
-
-REPOSITORY_SDKS: dict[str, tuple[str, tuple[str, ...], tuple[str, ...]]] = {
-    "c": ("clients/c", ("CMakeLists.txt", "Makefile", "meson.build"), (".c", ".h")),
-    "cpp": ("clients/cpp", ("CMakeLists.txt", "Makefile", "meson.build"), (".cc", ".cpp", ".cxx", ".hpp", ".h")),
-    "zig": ("clients/zig", ("build.zig", "build.zig.zon"), (".zig",)),
 }
 
 RUNTIME_ADAPTERS = {
@@ -135,11 +135,6 @@ def main() -> int:
             markers, suffixes = TARGET_IMPLEMENTATIONS[target]
             validate_surface(errors, target, directory, markers, suffixes)
 
-    # C, C++, and Zig are complete repository SDKs, but they are not Zed adapter
-    # target identities. They must remain buildable inside the repository package.
-    for label, (directory, markers, suffixes) in REPOSITORY_SDKS.items():
-        validate_surface(errors, label, directory, markers, suffixes)
-
     for runtime, directory in RUNTIME_ADAPTERS.items():
         validate_surface(errors, f"typescript-{runtime}", directory, (), (".ts", ".js", ".mjs"))
 
@@ -160,8 +155,8 @@ def main() -> int:
     if errors:
         return 1
     print(
-        f"validated {len(CANONICAL_TARGETS)} canonical Zed targets, "
-        f"{len(REPOSITORY_SDKS)} repository SDKs, and {len(RUNTIME_ADAPTERS)} runtime adapters"
+        f"validated {len(CANONICAL_TARGETS)} canonical Zed targets and "
+        f"{len(RUNTIME_ADAPTERS)} TypeScript runtime adapters"
     )
     return 0
 
