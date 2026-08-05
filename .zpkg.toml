@@ -1,0 +1,19 @@
+[package]
+org = "apostille-me"
+name = "apme-clients"
+version = "0.1.0"
+description = "Polyglot SDK clients for Apostille Me"
+license = "MIT"
+language = "polyglot"
+
+[package.repository]
+vcs = "git"
+url = "https://github.com/apostille-me/apme-clients"
+
+[publish]
+include_readme = true
+tag_format = "v{version}"
+exclude = [".env", ".env.*", "node_modules/**", "target/**", "dist/**", "*.log"]
+
+[scripts]
+test = "bash scripts/test.sh"
