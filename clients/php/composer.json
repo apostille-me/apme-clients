@@ -1,0 +1,7 @@
+{
+  "name": "apostille-me/apme-client",
+  "description": "PHP client for Apostille Me",
+  "type": "library",
+  "require": {"php": ">=8.1"},
+  "autoload": {"psr-4": {"ApostilleMe\\Client\\": "src/"}}
+}
