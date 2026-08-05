@@ -9,7 +9,7 @@ This repository is a Zed package installed under `.vendor/.zed`. It imports both
 - `apostille-me/apme-interfaces` — wire contracts and shared interfaces
 - `apostille-me/apme-libs` — shared product behavior and helpers
 
-Each supported Zed adapter is exposed as a target from the root `.zpkg.toml`. C, C++, and Zig remain buildable repository slices under `[targets.repository]` until Zed defines native adapters for those ecosystems. A `.zpkg.lock` is committed only when produced by a real resolver run.
+Every supported ecosystem is exposed as a target from the root `.zpkg.toml`. Current Zed language metadata maps C and C++ to the CMake ecosystem and Zig to the Zig ecosystem, so those native SDKs are first-class targets alongside the repository umbrella target. A `.zpkg.lock` is committed only when produced by a real resolver run.
 
 ## Client matrix
 
@@ -46,4 +46,4 @@ The SDK methods align with the shared edge contract: `health`, `getConfig`, `emi
 ./scripts/test.sh
 ```
 
-`test.sh` builds C and C++ with CMake, tests Zig when available, runs every other locally available toolchain, and reports explicit skips for unavailable ecosystems. CI can install the full matrix without changing the repository contract.
+`test.sh` builds C and C++ with CMake, tests Zig when available, runs every other locally available toolchain, and reports explicit skips for unavailable ecosystems. CI installs the required native toolchains and validates the complete matrix.
