@@ -1,0 +1,14 @@
+{
+  "name": "apostille-me/apme-client",
+  "description": "Apostille Me PHP client",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ApostilleMe\\": "src/"
+    }
+  }
+}
