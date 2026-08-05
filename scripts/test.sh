@@ -7,6 +7,18 @@ bash scripts/validate-client-layout.sh
 node --test tests/*.test.mjs
 node --check src/index.mjs
 
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+
+if command -v cmake >/dev/null 2>&1; then
+  cmake -S clients/c -B "$work/c" -DCMAKE_BUILD_TYPE=Release
+  cmake --build "$work/c"
+  ctest --test-dir "$work/c" --output-on-failure
+  cmake -S clients/cpp -B "$work/cpp" -DCMAKE_BUILD_TYPE=Release
+  cmake --build "$work/cpp"
+  ctest --test-dir "$work/cpp" --output-on-failure
+else echo 'SKIP C/C++: cmake unavailable'; fi
+if command -v zig >/dev/null 2>&1; then (cd clients/zig && zig build test); else echo 'SKIP zig'; fi
 if command -v cargo >/dev/null 2>&1; then
   cargo test --manifest-path clients/rust/Cargo.toml --all-targets
   cargo test --manifest-path clients/wasm/Cargo.toml --all-targets
@@ -16,7 +28,6 @@ if command -v dart >/dev/null 2>&1; then dart analyze clients/dart; else echo 'S
 if command -v gleam >/dev/null 2>&1; then (cd clients/gleam && gleam test); else echo 'SKIP gleam'; fi
 if command -v rebar3 >/dev/null 2>&1; then (cd clients/erlang && rebar3 compile); else echo 'SKIP erlang/rebar3'; fi
 if command -v mix >/dev/null 2>&1; then (cd clients/elixir && mix test); else echo 'SKIP elixir/mix'; fi
-
 if command -v python3 >/dev/null 2>&1; then
   PYTHONPATH=clients/python/src python3 -m unittest discover -s clients/python/tests -p 'test_*.py'
 else echo 'SKIP python3'; fi
@@ -27,9 +38,6 @@ if command -v php >/dev/null 2>&1; then
   php -l clients/php/src/Client.php >/dev/null
   php clients/php/tests/client_test.php
 else echo 'SKIP php'; fi
-
-work="$(mktemp -d)"
-trap 'rm -rf "$work"' EXIT
 if command -v javac >/dev/null 2>&1 && command -v java >/dev/null 2>&1; then
   mapfile -t java_sources < <(find clients/java/src -name '*.java' -type f | sort)
   javac -d "$work/java" "${java_sources[@]}"

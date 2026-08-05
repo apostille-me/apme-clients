@@ -4,6 +4,12 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 
 required=(
+  clients/c/CMakeLists.txt
+  clients/c/include/apme/client.h
+  clients/cpp/CMakeLists.txt
+  clients/cpp/include/apme/client.hpp
+  clients/zig/build.zig
+  clients/zig/build.zig.zon
   clients/gleam/gleam.toml
   clients/erlang/rebar.config
   clients/elixir/mix.exs
@@ -44,6 +50,11 @@ for target in "${targets[@]}"; do
   grep -Fq "[targets.$target]" .zpkg.toml || { printf 'missing Zed target: %s\n' "$target" >&2; exit 1; }
 done
 
+for language in c cpp zig; do
+  grep -Fq "\"$language\"" clients/matrix.json || { printf 'missing repository-slice language: %s\n' "$language" >&2; exit 1; }
+done
+
+grep -Fq '[targets.repository]' .zpkg.toml
 grep -Fq 'dir = ".vendor/.zed"' .zpkg.toml
 grep -Fq '.vendor/.zed/**' .zpkg.toml
 printf 'client layout and Zed manifest contract validated\n'
