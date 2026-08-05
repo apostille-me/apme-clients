@@ -6,6 +6,31 @@ on:
 permissions:
   contents: read
 jobs:
+  layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/validate-client-layout.sh
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test C client
+        run: |
+          cmake -S clients/c -B build/c -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/c
+          ctest --test-dir build/c --output-on-failure
+      - name: Build and test C++ client
+        run: |
+          cmake -S clients/cpp -B build/cpp -DCMAKE_BUILD_TYPE=Release
+          cmake --build build/cpp
+          ctest --test-dir build/cpp --output-on-failure
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: 0.13.0
+      - name: Build and test Zig client
+        run: zig build test
+        working-directory: clients/zig
   node:
     runs-on: ubuntu-latest
     steps:

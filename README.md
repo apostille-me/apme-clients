@@ -9,12 +9,15 @@ This repository is a Zed package installed under `.vendor/.zed`. It imports both
 - `apostille-me/apme-interfaces` — wire contracts and shared interfaces
 - `apostille-me/apme-libs` — shared product behavior and helpers
 
-Each language is also exposed as a Zed target from the root `.zpkg.toml`. A `.zpkg.lock` is committed only when produced by a real resolver run.
+Each supported Zed adapter is exposed as a target from the root `.zpkg.toml`. C, C++, and Zig remain buildable repository slices under `[targets.repository]` until Zed defines native adapters for those ecosystems. A `.zpkg.lock` is committed only when produced by a real resolver run.
 
 ## Client matrix
 
 | Ecosystem | Path | Package metadata |
 |---|---|---|
+| C | `clients/c` | `CMakeLists.txt` |
+| C++ | `clients/cpp` | `CMakeLists.txt` |
+| Zig | `clients/zig` | `build.zig` |
 | Gleam | `clients/gleam` | `gleam.toml` |
 | Erlang | `clients/erlang` | `rebar.config` |
 | Elixir | `clients/elixir` | `mix.exs` |
@@ -34,7 +37,7 @@ Each language is also exposed as a Zed target from the root `.zpkg.toml`. A `.zp
 | Kotlin | `clients/kotlin` | `build.gradle.kts` |
 | Swift | `clients/swift` | `Package.swift` |
 
-The SDK methods align with the shared edge contract: `health`, `getConfig`, `emitEvent`, and `emitAlert`. Every newly added implementation accepts an injectable transport so callers can supply platform networking, retries, telemetry, and deterministic tests without changing the public API.
+The SDK methods align with the shared edge contract: `health`, `getConfig`, `emitEvent`, and `emitAlert`. Every implementation accepts or prepares for an injectable transport so callers can supply platform networking, retries, telemetry, and deterministic tests without changing the public API.
 
 ## Validation
 
@@ -43,4 +46,4 @@ The SDK methods align with the shared edge contract: `health`, `getConfig`, `emi
 ./scripts/test.sh
 ```
 
-`test.sh` runs every locally available toolchain and reports explicit skips for unavailable ecosystems. CI can install the full matrix without changing the repository contract.
+`test.sh` builds C and C++ with CMake, tests Zig when available, runs every other locally available toolchain, and reports explicit skips for unavailable ecosystems. CI can install the full matrix without changing the repository contract.
