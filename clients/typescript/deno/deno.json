@@ -1,5 +1,8 @@
 {
+  "compilerOptions": {
+    "strict": true
+  },
+  "exports": "./mod.ts",
   "name": "@apostille-me/apme-client-deno",
-  "version": "0.1.0",
-  "exports": "./mod.ts"
+  "version": "0.1.0"
 }
