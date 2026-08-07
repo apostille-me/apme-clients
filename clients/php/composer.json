@@ -2,7 +2,8 @@
   "autoload": {
     "psr-4": {
       "ApostilleMe\\": "src/",
-      "ApostilleMe\\ApmeClient\\": "src/"
+      "ApostilleMe\\ApmeClient\\": "src/",
+      "ApostilleMe\\Client\\": "src/"
     }
   },
   "description": "PHP client for Apostille Me",
