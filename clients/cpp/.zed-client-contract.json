@@ -1,0 +1,10 @@
+{
+  "apiSurface": "clients/api-surface.json",
+  "apiSurfaceSha256": "5bbee6fc51a83b52708cb38d105b2ac236f88774fce37ce6ae93fad4eda264fe",
+  "coordinate": "apostille-me/apme-clients",
+  "runtime": "cpp",
+  "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",
+  "schemaVersion": 1,
+  "target": "cpp",
+  "zedTarget": "cpp"
+}
