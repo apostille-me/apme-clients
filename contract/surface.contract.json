@@ -1,0 +1,289 @@
+{
+  "$schema": "./surface.schema.json",
+  "$comment": "Declared exported interface for every client under clients/. Validated against surface.schema.json; enforced by contract/bin/check_surface.py in tests, in CI, and at pre-publish time. Edit this file to change the contract \u2014 never to paper over a client that drifted.",
+  "contractVersion": "1.0.0",
+  "product": "apme",
+  "provenance": {
+    "source": "/sessions/rcw-01hrcgtaar2wmaahcznwfnm3/mnt/codes/apostille-me/apme-interfaces/openapi.yaml",
+    "sourceSha256": "47bcaf8fc40ab31d467d3e25ff34bb94007a94eb5f423cd9459c2927b53672ea",
+    "sourceKind": "openapi",
+    "canonicalRepo": "apme-interfaces",
+    "generatedBy": "contract/bin/derive_contract.py --from-openapi",
+    "generatedAt": "2026-08-23"
+  },
+  "conventions": {
+    "clientType": "Client",
+    "errorTypes": [
+      "Error"
+    ],
+    "naming": {
+      "default": "snake_case",
+      "byLanguage": {
+        "c": "snake_case",
+        "cpp": "snake_case",
+        "dart": "camelCase",
+        "elixir": "snake_case",
+        "erlang": "snake_case",
+        "gleam": "snake_case",
+        "gleamlang": "snake_case",
+        "go": "PascalCase",
+        "golang": "PascalCase",
+        "java": "camelCase",
+        "kotlin": "camelCase",
+        "php": "camelCase",
+        "python": "snake_case",
+        "python3": "snake_case",
+        "ruby": "snake_case",
+        "rust": "snake_case",
+        "swift": "camelCase",
+        "typescript": "camelCase",
+        "wasm": "snake_case",
+        "zig": "camelCase"
+      }
+    }
+  },
+  "interfaceSchemas": [
+    {
+      "name": "Case",
+      "vendoredPath": "contract/schemas/case.json",
+      "upstreamRepo": "apme-interfaces",
+      "upstreamPath": "schemas/case.json",
+      "sha256": "d7ed5aa794cd8d1bb7d68cb2b6e1a0fc0c7606d4f93ca74bd18fe01a9620287d"
+    }
+  ],
+  "types": {
+    "Case": {
+      "$ref": "./schemas/case.json"
+    }
+  },
+  "operations": [
+    {
+      "name": "create_case",
+      "http": {
+        "method": "POST",
+        "path": "/api/v1/cases"
+      },
+      "params": [
+        {
+          "name": "body",
+          "in": "body",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "get_case",
+      "http": {
+        "method": "GET",
+        "path": "/api/v1/cases/{id}"
+      },
+      "params": [
+        {
+          "name": "id",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "health",
+      "http": {
+        "method": "GET",
+        "path": "/healthz"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "list_cases",
+      "http": {
+        "method": "GET",
+        "path": "/api/v1/cases"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    },
+    {
+      "name": "websocket",
+      "http": {
+        "method": "GET",
+        "path": "/ws"
+      },
+      "params": [],
+      "returns": {
+        "type": "object"
+      }
+    }
+  ],
+  "languages": {
+    "c": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "symbolPrefix": "apme_",
+      "minCoverage": 0.0
+    },
+    "cpp": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "dart": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "ApmeClient",
+      "minCoverage": 0.0
+    },
+    "elixir": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "ApmeClient",
+      "minCoverage": 20.0
+    },
+    "erlang": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 20.0
+    },
+    "gleam": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 20.0
+    },
+    "gleamlang": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "go": {
+      "tier": "warn",
+      "naming": "PascalCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "golang": {
+      "tier": "warn",
+      "naming": "PascalCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 0.0
+    },
+    "java": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "kotlin": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "php": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "python": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "python3": {
+      "tier": "gate",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 100.0
+    },
+    "ruby": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "rust": {
+      "tier": "warn",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "swift": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "typescript": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "clientType": "Client",
+      "minCoverage": 20.0
+    },
+    "wasm": {
+      "tier": "gate",
+      "naming": "snake_case",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 100.0
+    },
+    "zig": {
+      "tier": "warn",
+      "naming": "camelCase",
+      "enforceArity": false,
+      "exclude": [],
+      "minCoverage": 0.0
+    }
+  },
+  "waivers": []
+}
