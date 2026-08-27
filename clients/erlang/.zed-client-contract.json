@@ -1,0 +1,10 @@
+{
+  "apiSurface": "clients/api-surface.json",
+  "apiSurfaceSha256": "8eadf4c29e47224dd86cabb3408cd82b920250d67df19f5930c1086cb14f89e8",
+  "coordinate": "apostille-me/apme-clients",
+  "runtime": "erlang",
+  "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",
+  "schemaVersion": 1,
+  "target": "erlang",
+  "zedTarget": "erlang"
+}
