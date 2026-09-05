@@ -1,6 +1,6 @@
 {
   "apiSurface": "clients/api-surface.json",
-  "apiSurfaceSha256": "5bbee6fc51a83b52708cb38d105b2ac236f88774fce37ce6ae93fad4eda264fe",
+  "apiSurfaceSha256": "8eadf4c29e47224dd86cabb3408cd82b920250d67df19f5930c1086cb14f89e8",
   "coordinate": "apostille-me/apme-clients",
   "runtime": "zig",
   "schemaId": "https://zpkg.tech/schemas/client-api.schema.json",
