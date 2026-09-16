@@ -51,7 +51,7 @@ name = "apme-clients-typescript"
 adapter = "node"
 
 [targets.golang]
-dir = "clients/go"
+dir = "clients/golang"
 adapter = "none"
 
 [targets.python]
