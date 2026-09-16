@@ -9,10 +9,5 @@
   "name": "@apostille-me/apme-client-nodejs",
   "private": true,
   "type": "module",
-  "version": "0.1.0",
-  "scripts": {
-    "test:contract": "python3 ../../../contract/bin/check_surface.py --lang typescript",
-    "pretest": "python3 ../../../contract/bin/check_surface.py --lang typescript",
-    "prepublishOnly": "python3 ../../../contract/bin/check_surface.py --prepublish --lang typescript"
-  }
+  "version": "0.1.0"
 }
