@@ -15,6 +15,9 @@ temp/worktrees
 /clients/java/target/
 /clients/kotlin/.gradle/
 /clients/kotlin/build/
+**/__pycache__/
+*.py[cod]
+.ores/
 
 # typespec-json-schema-validator comparison evidence (generated; never an authority)
 .typespec-json-schema-validator/
