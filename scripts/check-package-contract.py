@@ -17,7 +17,7 @@ CANONICAL_TARGETS = {
     "cpp": "clients/cpp",
     "zig": "clients/zig",
     "nodejs": "clients/typescript",
-    "golang": "clients/go",
+    "golang": "clients/golang",
     "python": "clients/python",
     "ruby": "clients/ruby",
     "php": "clients/php",
