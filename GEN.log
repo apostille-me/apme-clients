@@ -1,0 +1,11 @@
+{
+  "apiSurfaceSha256": "8eadf4c29e47224dd86cabb3408cd82b920250d67df19f5930c1086cb14f89e8",
+  "changed": [],
+  "errors": [],
+  "minimumTargets": 15,
+  "mode": "write",
+  "prefix": "apme",
+  "repository": "apostille-me/apme-clients",
+  "schemaVersion": 1,
+  "standardTargets": 20
+}
