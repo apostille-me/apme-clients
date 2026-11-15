@@ -47,3 +47,13 @@ The SDK methods align with the shared edge contract: `health`, `getConfig`, `emi
 ```
 
 `test.sh` builds C and C++ with CMake, tests Zig when available, runs every other locally available toolchain, and reports explicit skips for unavailable ecosystems. CI installs the required native toolchains and validates the complete matrix.
+
+## Experimental AttoLang (.atto)
+
+`experimental/atto/client.atto` provides an opt-in transport-neutral
+request-plan prototype for health, config, events and alerts. Its self-contained
+`main()` is a compiler conformance fixture (expected guest exit 42), and a
+Rust source-level parity test compares its routes and HTTP methods to the
+existing Rust SDK. It is intentionally **not** a canonical released target:
+the package contract and SDK fingerprint gates must pass before admission.
+See [experimental/atto/README.md](experimental/atto/README.md).
