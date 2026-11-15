@@ -1,7 +1,7 @@
 // Static parity audit; Atto guest execution is a separate compiler check.
 #[test]
 fn atto_route_specs_match_rust_client() {
-    let atto = include_str!("../../atto/client.atto");
+    let atto = include_str!("../../../experimental/atto/client.atto");
     let rust = include_str!("../src/lib.rs");
     for (method, path, verb) in [
         ("health", "/healthz", "GET"),
