@@ -50,11 +50,10 @@ The SDK methods align with the shared edge contract: `health`, `getConfig`, `emi
 
 ## Experimental AttoLang (.atto)
 
-`clients/atto/client.atto` exposes a transport-neutral request plan for `health`,
-`config`, `events`, and `alerts`; it does **not** perform network I/O or claim
-backend parity. Its self-contained `main()` is an executable Atto conformance
-fixture (expected exit 42), while the Rust-side parity test checks that route
-names and HTTP methods remain aligned with the existing Rust SDK. Runtime
-verification requires compiling and executing the fixture with a pinned Atto
-compiler and inspecting its guest result; host-only source checks are insufficient.
-See [`clients/atto/README.md`](clients/atto/README.md).
+`experimental/atto/client.atto` provides an opt-in transport-neutral
+request-plan prototype for health, config, events and alerts. Its self-contained
+`main()` is a compiler conformance fixture (expected guest exit 42), and a
+Rust source-level parity test compares its routes and HTTP methods to the
+existing Rust SDK. It is intentionally **not** a canonical released target:
+the package contract and SDK fingerprint gates must pass before admission.
+See [experimental/atto/README.md](experimental/atto/README.md).
