@@ -31,7 +31,6 @@ for (const dependency of ["apostille-me/apme-interfaces", "apostille-me/apme-lib
 
 const canonicalTargets = new Map([
   ["repository", "."],
-  ["atto", "clients/atto"],
   ["c", "clients/c"],
   ["cpp", "clients/cpp"],
   ["zig", "clients/zig"],
